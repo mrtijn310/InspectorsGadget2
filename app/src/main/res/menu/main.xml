@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/take_picture"
+        android:title="Take a picture" />
+    <item android:id="@+id/record_video"
+        android:title="Record a video" />
+    <item android:id="@+id/find_ios"
+        android:title="Top iOS developer" />
+</menu>
