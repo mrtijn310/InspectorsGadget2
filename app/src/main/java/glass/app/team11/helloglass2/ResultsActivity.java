@@ -59,7 +59,7 @@ public class ResultsActivity extends Activity {
             mPlatform = getIntent().getStringExtra(SEARCH);
         }
 
-        findDevelopers(mPlatform);
+        findCode(mPlatform);
         mCardScroller.setAdapter(new DeveloperAdapter(mCards));
 
         // Handle the TAP event.
@@ -106,25 +106,26 @@ public class ResultsActivity extends Activity {
         return card.getView();
     }
 
-    private void findDevelopers(String platform){
+    private void findCode(String code){
 //        for (int i=1; i<=10; i++){
         Card card1 = new Card(this);
-        card1.setText(platform+" hello "+Integer.toString(1) + "\n" + "New line");
+        String text1 = "Pagina 1"  + "\n";
+        text1 += "UN number: " + code;
+        card1.setText(text1);
         card1.setTimestamp("time");
-        mCards.add(card1);
 
         Card card2 = new Card(this);
-        card2.setText(platform+" "+Integer.toString(2));
-        card2.setTimestamp(platform);
-        card2.setImageLayout(Card.ImageLayout.LEFT);
-        card2.addImage(R.drawable.logo);
-        mCards.add(card2);
+        String text2 = "Pagina 2"  + "\n";
+        text2 += "UN number: " + code;
+        card2.setText(text2);
 
         Card card3= new Card(this);
-        card3.setText(platform+" "+Integer.toString(3));
-        card3.setTimestamp(platform);
-        card3.setImageLayout(Card.ImageLayout.LEFT);
-        card3.addImage(R.drawable.logo);
+        String text3 = "Pagina 3"  + "\n";
+        text3 += "UN number: " + code;
+        card3.setText(text3);
+
+        mCards.add(card1);
+        mCards.add(card2);
         mCards.add(card3);
 //        }
         mCardScroller.setSelection(0);

@@ -210,8 +210,14 @@ public class MainActivity extends Activity {
                 case R.id.record_video:
                     recordVideo();
                     break;
-                case R.id.find_code:
+                case R.id.find_un_1:
                     findCode("0001");
+                    break;
+                case R.id.find_un_2:
+                    findCode("0002");
+                    break;
+                case R.id.find_un_3:
+                    findCode("0003");
                     break;
             }
             return true;

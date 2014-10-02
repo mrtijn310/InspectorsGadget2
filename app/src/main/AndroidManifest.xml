@@ -33,18 +33,10 @@
                 android:value="com.eloptico.MainActivity" />
         </activity>
         <activity
-            android:name=".codeActivity"
-            android:label="@string/title_activity_code" >
-        </activity>
-        <activity
             android:name=".LiveCardMenuActivity"
             android:theme="@style/MenuTheme" />
 
-        <service
-            android:name=".CodeActivity"
-            android:icon="@drawable/ic_glass_logo"
-            android:label="@string/title_activity_code" >
-        </service>
+
     </application>
 
 </manifest>

@@ -4,6 +4,10 @@
         android:title="Take a picture" />
     <item android:id="@+id/record_video"
         android:title="Record a video" />
-    <item android:id="@+id/find_code"
-        android:title="Find code" />
+    <item android:id="@+id/find_un_1"
+        android:title="Find UN Number 1" />
+    <item android:id="@+id/find_un_2"
+        android:title="Find UN Number 2" />
+    <item android:id="@+id/find_un_3"
+        android:title="Find UN Number 3" />
 </menu>
