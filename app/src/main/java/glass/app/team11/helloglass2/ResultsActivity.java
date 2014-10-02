@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -106,14 +107,26 @@ public class ResultsActivity extends Activity {
     }
 
     private void findDevelopers(String platform){
-        for (int i=1; i<=10; i++){
-            Card card = new Card(this);
-            card.setText(platform+" "+Integer.toString(i));
-            card.setTimestamp(platform);
-            card.setImageLayout(Card.ImageLayout.LEFT);
-            card.addImage(R.drawable.logo);
-            mCards.add(card);
-        }
+//        for (int i=1; i<=10; i++){
+        Card card1 = new Card(this);
+        card1.setText(platform+" hello "+Integer.toString(1) + "\n" + "New line");
+        card1.setTimestamp("time");
+        mCards.add(card1);
+
+        Card card2 = new Card(this);
+        card2.setText(platform+" "+Integer.toString(2));
+        card2.setTimestamp(platform);
+        card2.setImageLayout(Card.ImageLayout.LEFT);
+        card2.addImage(R.drawable.logo);
+        mCards.add(card2);
+
+        Card card3= new Card(this);
+        card3.setText(platform+" "+Integer.toString(3));
+        card3.setTimestamp(platform);
+        card3.setImageLayout(Card.ImageLayout.LEFT);
+        card3.addImage(R.drawable.logo);
+        mCards.add(card3);
+//        }
         mCardScroller.setSelection(0);
     }
 
@@ -165,14 +178,24 @@ public class ResultsActivity extends Activity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS || featureId ==  Window.FEATURE_OPTIONS_PANEL) {
             switch (item.getItemId()) {
-                case R.id.developer_fav:
-                    Toast.makeText(getApplicationContext(), "Favorite", Toast.LENGTH_LONG).show();
-                    break;
-                case R.id.developer_hire:
+               case R.id.developer_hire:
                     Toast.makeText(getApplicationContext(), "Message", Toast.LENGTH_LONG).show();
                     break;
                 case R.id.go_back:
                     break;
+                case R.id.c_0001:
+                    Toast.makeText(getApplicationContext(), "0001", Toast.LENGTH_LONG).show();
+                    break;
+                case R.id.c_0002:
+                    Toast.makeText(getApplicationContext(), "0002", Toast.LENGTH_LONG).show();
+                    break;
+                case R.id.c_0003:
+                    Toast.makeText(getApplicationContext(), "0003", Toast.LENGTH_LONG).show();
+                    break;
+//                case R.id.developer_hire:
+//                    Toast.makeText(getApplicationContext(), "Message", Toast.LENGTH_LONG).show();
+//                    break;
+//
             }
             return true;
         }

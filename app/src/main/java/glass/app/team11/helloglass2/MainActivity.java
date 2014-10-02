@@ -14,15 +14,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
 import com.google.android.glass.app.Card;
 import com.google.android.glass.content.Intents;
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
 import com.google.android.glass.view.WindowUtils;
-import com.google.android.glass.widget.CardBuilder;
+//import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
 
@@ -93,24 +91,8 @@ public class MainActivity extends Activity {
         setContentView(mCardScroller);
     }
 
-    public void findDevelopers(String platform){
-        Intent resultsIntent = new Intent(this, ResultsActivity.class);
-        resultsIntent.putExtra(ResultsActivity.SEARCH, platform);
-        startActivity(resultsIntent);
-    }
-
     private static final int TAKE_PICTURE_REQUEST = 1;
     private static final int ACTION_VIDEO_CAPTURE = 2;
-
-    public void takePicture(){
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, TAKE_PICTURE_REQUEST);
-    }
-
-    public void recordVideo(){
-        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-        startActivityForResult(intent, ACTION_VIDEO_CAPTURE);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -136,6 +118,7 @@ public class MainActivity extends Activity {
             // can update your UI to let the user know that the application is
             // waiting for the picture (for example, by displaying the thumbnail
             // image and a progress indicator).
+
 //            ViewGroup vg = (ViewGroup)(cameraView.getParent());
 //            vg.removeAllViews();
 //            RelativeLayout layout = new RelativeLayout(this);
@@ -191,139 +174,27 @@ public class MainActivity extends Activity {
         }
     }
 
+    public void takePicture(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, TAKE_PICTURE_REQUEST);
+    }
 
+    public void recordVideo(){
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        startActivityForResult(intent, ACTION_VIDEO_CAPTURE);
+    }
 
+    public void findDevelopers(String platform){
+        Intent resultsIntent = new Intent(this, ResultsActivity.class);
+        resultsIntent.putExtra(ResultsActivity.SEARCH, platform);
+        startActivity(resultsIntent);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @Override
-//    protected void onActivityResult(int resultCode, Intent data)
-//    {
-//        // Handle photos
-//
-//            String picturePath = data.getStringExtra(CameraManager.EXTRA_PICTURE_FILE_PATH);
-//            processPictureWhenReady(picturePath);
-//
-////        // Handle videos
-////        if (requestCode == TAKE_VIDEO_REQUEST && resultCode == RESULT_OK)
-////        {
-////            String picturePath = data.getStringExtra(CameraManager.EXTRA_VIDEO_FILE_PATH);
-////            processPictureWhenReady(picturePath);
-////        }
-//
-//        super.onActivityResult(resultCode, data);
-//    }
-//
-//    private void processPictureWhenReady(final String picturePath)
-//    {
-//        final File pictureFile = new File(picturePath);
-//
-//        if (pictureFile.exists())
-//        {
-//            Intent shareIntent = new Intent(this, BluetoothClient.class);
-//            shareIntent.putExtra(SHARE_PICTURE, picturePath);
-//            startActivity(shareIntent);
-//            finish();
-//        }
-//        else
-//        {
-//            // The file does not exist yet. Before starting the file observer, you
-//            // can update your UI to let the user know that the application is
-//            // waiting for the picture (for example, by displaying the thumbnail
-//            // image and a progress indicator).
-//            ViewGroup vg = (ViewGroup)(cameraView.getParent());
-//            vg.removeAllViews();
-//            RelativeLayout layout = new RelativeLayout(this);
-//            ProgressBar progressBar = new ProgressBar(this,null,android.R.attr.progressBarStyleLarge);
-//            progressBar.setIndeterminate(true);
-//            progressBar.setVisibility(View.VISIBLE);
-//            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
-//                    , ViewGroup.LayoutParams.MATCH_PARENT);
-//
-//            params.addRule(RelativeLayout.CENTER_IN_PARENT);
-//            layout.addView(progressBar,params);
-//
-//            setContentView(layout);
-//
-//            final File parentDirectory = pictureFile.getParentFile();
-//
-//            observer = new FileObserver(parentDirectory.getPath()) {
-//                // Protect against additional pending events after CLOSE_WRITE is
-//                // handled.
-//                private boolean isFileWritten;
-//
-//                @Override
-//                public void onEvent(int event, String path) {
-//                    if (!isFileWritten) {
-//                        // For safety, make sure that the file that was created in
-//                        // the directory is actually the one that we're expecting.
-//                        File affectedFile = new File(parentDirectory, path);
-//
-//                        isFileWritten = (event == FileObserver.CLOSE_WRITE
-//                                && affectedFile.equals(pictureFile));
-//
-//                        if (isFileWritten) {
-//                            stopWatching();
-//
-//                            // Now that the file is ready, recursively call
-//                            // processPictureWhenReady again (on the UI thread).
-//                            runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    processPictureWhenReady(picturePath);
-//                                }
-//                            });
-//                        }
-//                    }
-//                }
-//            };
-//
-//            observer.startWatching();
-//        }
-//    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void findCode(String code){
+        Intent resultsIntent = new Intent(this, ResultsActivity.class);
+        resultsIntent.putExtra(ResultsActivity.SEARCH, code);
+        startActivity(resultsIntent);
+    }
 
 
 
@@ -339,8 +210,8 @@ public class MainActivity extends Activity {
                 case R.id.record_video:
                     recordVideo();
                     break;
-                case R.id.find_ios:
-                    findDevelopers("iOS");
+                case R.id.find_code:
+                    findCode("0001");
                     break;
             }
             return true;
@@ -369,10 +240,18 @@ public class MainActivity extends Activity {
         return super.onCreatePanelMenu(featureId, menu);
     }
 
-    /**
-     * Builds a Glass styled "Hello World!" view using the {@link CardBuilder} class.
-     */
+//    /**
+//    // * Builds a Glass styled "Hello World!" view using the {@link CardBuilder} class.
+//     */
     private View buildView() {
+//        View view = new CardBuilder(this.getBaseContext(), CardBuilder.Layout.COLUMNS)
+//                .setText("You can even put a centered icon on a COLUMNS card instead of a mosaic.")
+//                .setFootnote("This is the footnote")
+//                .setTimestamp("just now")
+//                .setIcon(R.drawable.portofrotterdamlogo)
+//                .getView();
+//        return view;
+
         Card card = new Card(this);
         card.setText(R.string.app_name);
         card.setImageLayout(Card.ImageLayout.LEFT);

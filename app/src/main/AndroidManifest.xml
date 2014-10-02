@@ -3,7 +3,7 @@
     package="glass.app.team11.helloglass2" >
 
     <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
-    <uses-permission android:name="com.google.android.glass.permission.INTERNET"/>
+    <uses-permission android:name="com.google.android.glass.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -24,14 +24,27 @@
         </activity>
         <activity
             android:name=".ResultsActivity"
-            android:immersive="true"
             android:icon="@drawable/ic_launcher"
+            android:immersive="true"
             android:label="@string/title_activity_results"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.eloptico.MainActivity" />
         </activity>
+        <activity
+            android:name=".codeActivity"
+            android:label="@string/title_activity_code" >
+        </activity>
+        <activity
+            android:name=".LiveCardMenuActivity"
+            android:theme="@style/MenuTheme" />
+
+        <service
+            android:name=".CodeActivity"
+            android:icon="@drawable/ic_glass_logo"
+            android:label="@string/title_activity_code" >
+        </service>
     </application>
 
 </manifest>

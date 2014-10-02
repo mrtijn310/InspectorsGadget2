@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/developer_fav"
-        android:title="Add to favorites" />
+    <item android:id="@+id/c_0001"
+        android:title="0001" />
+    <item android:id="@+id/c_0002"
+        android:title="0002" />
+    <item android:id="@+id/c_0003"
+        android:title="0003" />
     <item android:id="@+id/developer_hire"
         android:title="Hire" />
     <item android:id="@+id/go_back"

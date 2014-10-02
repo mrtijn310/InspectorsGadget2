@@ -4,6 +4,6 @@
         android:title="Take a picture" />
     <item android:id="@+id/record_video"
         android:title="Record a video" />
-    <item android:id="@+id/find_ios"
-        android:title="Top iOS developer" />
+    <item android:id="@+id/find_code"
+        android:title="Find code" />
 </menu>
