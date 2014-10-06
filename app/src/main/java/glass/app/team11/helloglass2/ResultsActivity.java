@@ -1,29 +1,25 @@
 package glass.app.team11.helloglass2;
 
-import com.google.android.glass.app.Card;
-import com.google.android.glass.media.Sounds;
-import com.google.android.glass.touchpad.Gesture;
-import com.google.android.glass.view.WindowUtils;
-import com.google.android.glass.widget.CardBuilder;
-import com.google.android.glass.widget.CardScrollAdapter;
-import com.google.android.glass.widget.CardScrollView;
-
 import android.app.Activity;
 import android.content.Context;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.google.android.glass.app.Card;
+import com.google.android.glass.touchpad.Gesture;
+import com.google.android.glass.view.WindowUtils;
+import com.google.android.glass.widget.CardBuilder;
+import com.google.android.glass.widget.CardScrollView;
+
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -38,6 +34,8 @@ import java.util.List;
 public class ResultsActivity extends Activity {
     public static final String UNNumber = "1234";
     public static final String UNDescription = "description";
+    public HashMap UNMap = new HashMap();
+
 
     private String mPlatform="Android";
 
@@ -76,6 +74,17 @@ public class ResultsActivity extends Activity {
 
 //        android.view.GestureDetector mGestureDetector = createGestureDetector(this);
         setContentView(mCardScroller);
+
+        UNMap.put("1428", "Sodium");
+        UNMap.put("2734", "Amines, liquid, corrosive, flammable, n.o.s. or Polyamines, liquid, corrosive, flammable, n.o.s.");
+        UNMap.put("2796", "Battery fluid, acid or Sulfuric acid with not more than 51 percent acid");
+        UNMap.put("3077", "Environmentally hazardous substance, solid, n.o.s. (not including waste)");
+        UNMap.put("3166", "Vehicle, flammable gas powered");
+
+        UNMap.put("3163", "Liquefied gas, n.o.s.");
+        UNMap.put("3174", "Titanium disulphide");
+        UNMap.put("1713", "Zinc cyanide");
+
     }
 
     @Override
@@ -118,7 +127,7 @@ public class ResultsActivity extends Activity {
 
         Card card2 = new Card(this);
         String text2 = "Name"  + "\n";
-        text2 += UNDescription;
+        text2 += UNMap.get(code).toString();
         card2.setText(text2);
 
         mCards.add(card1);

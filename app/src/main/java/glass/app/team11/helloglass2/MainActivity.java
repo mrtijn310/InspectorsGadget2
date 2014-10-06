@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.Bundle;
 import android.os.Environment;
@@ -35,7 +36,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.HashMap;
 
 //import com.google.android.glass.widget.CardBuilder;
 
@@ -59,7 +59,6 @@ public class MainActivity extends Activity {
     private CardScrollView mCardScroller;
     private GestureDetector mGestureDetector;
     private CameraView cameraView;
-    public HashMap UNMap = new HashMap();
 
     public static final String PACKAGE_NAME = "glass.app.team11.helloglass2";
     String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/inspectorsgadget/";
@@ -160,15 +159,6 @@ public class MainActivity extends Activity {
 
         //_path = DATA_PATH + "/ocr.jpg";
 
-        UNMap.put("1428", "Sodium");
-        UNMap.put("2734", "Amines, liquid, corrosive, flammable, n.o.s. or Polyamines, liquid, corrosive, flammable, n.o.s.");
-        UNMap.put("2796", "Battery fluid, acid or Sulfuric acid with not more than 51 percent acid");
-        UNMap.put("3077", "Environmentally hazardous substance, solid, n.o.s. (not including waste)");
-        UNMap.put("3166", "Vehicle, flammable gas powered");
-
-        UNMap.put("3163", "Liquefied gas, n.o.s.");
-        UNMap.put("3174", "Titanium disulphide");
-        UNMap.put("1713", "Zinc cyanide");
 
 
 
@@ -282,7 +272,6 @@ public class MainActivity extends Activity {
     public void findCode(String code){
         Intent resultsIntent = new Intent(this, ResultsActivity.class);
         resultsIntent.putExtra(ResultsActivity.UNNumber, code);
-        resultsIntent.putExtra(ResultsActivity.UNDescription, UNMap.get(code).toString());
 
         startActivity(resultsIntent);
     }
