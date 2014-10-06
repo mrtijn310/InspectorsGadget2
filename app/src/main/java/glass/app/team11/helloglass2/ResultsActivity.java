@@ -56,6 +56,16 @@ public class ResultsActivity extends Activity {
         mCardScroller = new CardScrollView(this);
         mCards = new ArrayList<Card>();
 
+        UNMap.put("1428", "Sodium");
+        UNMap.put("2734", "Amines, liquid, corrosive, flammable, n.o.s. or Polyamines, liquid, corrosive, flammable, n.o.s.");
+        UNMap.put("2796", "Battery fluid, acid or Sulfuric acid with not more than 51 percent acid");
+        UNMap.put("3077", "Environmentally hazardous substance, solid, n.o.s. (not including waste)");
+        UNMap.put("3166", "Vehicle, flammable gas powered");
+
+        UNMap.put("3163", "Liquefied gas, n.o.s.");
+        UNMap.put("3174", "Titanium disulphide");
+        UNMap.put("1713", "Zinc cyanide");
+
         if(getIntent().hasExtra(UNNumber)){
             mPlatform = getIntent().getStringExtra(UNNumber);
         }
@@ -74,17 +84,6 @@ public class ResultsActivity extends Activity {
 
 //        android.view.GestureDetector mGestureDetector = createGestureDetector(this);
         setContentView(mCardScroller);
-
-        UNMap.put("1428", "Sodium");
-        UNMap.put("2734", "Amines, liquid, corrosive, flammable, n.o.s. or Polyamines, liquid, corrosive, flammable, n.o.s.");
-        UNMap.put("2796", "Battery fluid, acid or Sulfuric acid with not more than 51 percent acid");
-        UNMap.put("3077", "Environmentally hazardous substance, solid, n.o.s. (not including waste)");
-        UNMap.put("3166", "Vehicle, flammable gas powered");
-
-        UNMap.put("3163", "Liquefied gas, n.o.s.");
-        UNMap.put("3174", "Titanium disulphide");
-        UNMap.put("1713", "Zinc cyanide");
-
     }
 
     @Override
