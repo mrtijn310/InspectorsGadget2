@@ -25,6 +25,7 @@ import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * An {@link Activity} showing a tuggable "Hello World!" card.
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
     private CardScrollView mCardScroller;
     private GestureDetector mGestureDetector;
     private CameraView cameraView;
+    public HashMap UNMap = new HashMap();
 
 
 
@@ -89,6 +91,20 @@ public class MainActivity extends Activity {
 
         mGestureDetector = createGestureDetector(this);
         setContentView(mCardScroller);
+
+        UNMap.put("1428", "Sodium");
+        UNMap.put("2734", "Amines, liquid, corrosive, flammable, n.o.s. or Polyamines, liquid, corrosive, flammable, n.o.s.");
+        UNMap.put("2796", "Battery fluid, acid or Sulfuric acid with not more than 51 percent acid");
+        UNMap.put("3077", "Environmentally hazardous substance, solid, n.o.s. (not including waste)");
+        UNMap.put("3166", "Vehicle, flammable gas powered");
+
+        UNMap.put("3163", "Liquefied gas, n.o.s.");
+        UNMap.put("3174", "Titanium disulphide");
+        UNMap.put("1713", "Zinc cyanide");
+
+
+
+
     }
 
     private static final int TAKE_PICTURE_REQUEST = 1;
@@ -186,15 +202,19 @@ public class MainActivity extends Activity {
 
     public void findDevelopers(String platform){
         Intent resultsIntent = new Intent(this, ResultsActivity.class);
-        resultsIntent.putExtra(ResultsActivity.SEARCH, platform);
+        resultsIntent.putExtra(ResultsActivity.UNNumber, platform);
         startActivity(resultsIntent);
     }
 
     public void findCode(String code){
         Intent resultsIntent = new Intent(this, ResultsActivity.class);
-        resultsIntent.putExtra(ResultsActivity.SEARCH, code);
+        resultsIntent.putExtra(ResultsActivity.UNNumber, code);
+        resultsIntent.putExtra(ResultsActivity.UNDescription, UNMap.get(code).toString());
+
         startActivity(resultsIntent);
     }
+
+
 
 
 
@@ -211,13 +231,13 @@ public class MainActivity extends Activity {
                     recordVideo();
                     break;
                 case R.id.find_un_1:
-                    findCode("0001");
+                    findCode("1428");
                     break;
                 case R.id.find_un_2:
-                    findCode("0002");
+                    findCode("3163");
                     break;
                 case R.id.find_un_3:
-                    findCode("0003");
+                    findCode("1713");
                     break;
             }
             return true;
