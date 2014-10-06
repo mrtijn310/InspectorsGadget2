@@ -3,16 +3,9 @@ package glass.app.team11.helloglass2;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.FileObserver;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -29,13 +22,10 @@ import com.google.android.glass.touchpad.GestureDetector;
 import com.google.android.glass.view.WindowUtils;
 import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
-import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+
+//import com.google.android.glass.widget.CardBuilder;
 
 //import com.google.android.glass.widget.CardBuilder;
 
@@ -57,6 +47,7 @@ public class MainActivity extends Activity {
     private CardScrollView mCardScroller;
     private GestureDetector mGestureDetector;
     private CameraView cameraView;
+    public HashMap UNMap = new HashMap();
 
     public static final String PACKAGE_NAME = "glass.app.team11.helloglass2";
     String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/inspectorsgadget/";
@@ -156,6 +147,20 @@ public class MainActivity extends Activity {
         }
 
         //_path = DATA_PATH + "/ocr.jpg";
+
+        UNMap.put("1428", "Sodium");
+        UNMap.put("2734", "Amines, liquid, corrosive, flammable, n.o.s. or Polyamines, liquid, corrosive, flammable, n.o.s.");
+        UNMap.put("2796", "Battery fluid, acid or Sulfuric acid with not more than 51 percent acid");
+        UNMap.put("3077", "Environmentally hazardous substance, solid, n.o.s. (not including waste)");
+        UNMap.put("3166", "Vehicle, flammable gas powered");
+
+        UNMap.put("3163", "Liquefied gas, n.o.s.");
+        UNMap.put("3174", "Titanium disulphide");
+        UNMap.put("1713", "Zinc cyanide");
+
+
+
+
     }
 
     private static final int TAKE_PICTURE_REQUEST = 1;
@@ -258,13 +263,15 @@ public class MainActivity extends Activity {
 
     public void findDevelopers(String platform){
         Intent resultsIntent = new Intent(this, ResultsActivity.class);
-        resultsIntent.putExtra(ResultsActivity.SEARCH, platform);
+        resultsIntent.putExtra(ResultsActivity.UNNumber, platform);
         startActivity(resultsIntent);
     }
 
     public void findCode(String code){
         Intent resultsIntent = new Intent(this, ResultsActivity.class);
-        resultsIntent.putExtra(ResultsActivity.SEARCH, code);
+        resultsIntent.putExtra(ResultsActivity.UNNumber, code);
+        resultsIntent.putExtra(ResultsActivity.UNDescription, UNMap.get(code).toString());
+
         startActivity(resultsIntent);
     }
 
@@ -360,6 +367,8 @@ public class MainActivity extends Activity {
         // Cycle done.
     }
 
+
+
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
@@ -373,13 +382,13 @@ public class MainActivity extends Activity {
                     recordVideo();
                     break;
                 case R.id.find_un_1:
-                    findCode("0001");
+                    findCode("1428");
                     break;
                 case R.id.find_un_2:
-                    findCode("0002");
+                    findCode("3163");
                     break;
                 case R.id.find_un_3:
-                    findCode("0003");
+                    findCode("1713");
                     break;
             }
             return true;

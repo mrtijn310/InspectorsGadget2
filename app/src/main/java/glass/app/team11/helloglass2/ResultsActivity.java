@@ -36,8 +36,11 @@ import java.util.List;
  * @see <a href="https://developers.google.com/glass/develop/gdk/touch">GDK Developer Guide</a>
  */
 public class ResultsActivity extends Activity {
-    public static final String SEARCH = "search";
+    public static final String UNNumber = "1234";
+    public static final String UNDescription = "description";
+
     private String mPlatform="Android";
+
 
     private List<Card> mCards;
     private GestureDetector mGestureDetector;
@@ -55,8 +58,8 @@ public class ResultsActivity extends Activity {
         mCardScroller = new CardScrollView(this);
         mCards = new ArrayList<Card>();
 
-        if(getIntent().hasExtra(SEARCH)){
-            mPlatform = getIntent().getStringExtra(SEARCH);
+        if(getIntent().hasExtra(UNNumber)){
+            mPlatform = getIntent().getStringExtra(UNNumber);
         }
 
         findCode(mPlatform);
@@ -109,25 +112,18 @@ public class ResultsActivity extends Activity {
     private void findCode(String code){
 //        for (int i=1; i<=10; i++){
         Card card1 = new Card(this);
-        String text1 = "Pagina 1"  + "\n";
-        text1 += "UN number: " + code;
+        String text1 = "UN number: " + code;
         card1.setText(text1);
         card1.setTimestamp("time");
 
         Card card2 = new Card(this);
-        String text2 = "Pagina 2"  + "\n";
-        text2 += "UN number: " + code;
+        String text2 = "Name"  + "\n";
+        text2 += UNDescription;
         card2.setText(text2);
-
-        Card card3= new Card(this);
-        String text3 = "Pagina 3"  + "\n";
-        text3 += "UN number: " + code;
-        card3.setText(text3);
 
         mCards.add(card1);
         mCards.add(card2);
-        mCards.add(card3);
-//        }
+
         mCardScroller.setSelection(0);
     }
 
