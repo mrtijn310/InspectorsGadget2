@@ -324,7 +324,7 @@ public class MainActivity extends Activity {
 
             if (rotate != 0) {
 
-                // Getting width & height of the given image.
+                // Getting width & height of the given image
                 int w = bitmap.getWidth();
                 int h = bitmap.getHeight();
 
